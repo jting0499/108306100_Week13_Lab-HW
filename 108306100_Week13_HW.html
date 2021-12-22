@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+	.font_fam{
+		font-family: sans-serif;
+	}
+
+	.b{
+		width: 110pt;
+		height: 33pt;
+		text-align: center;
+		background-color: saddlebrown;
+		border-style: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	.b:hover{
+		background-color:floralwhite;
+	}
+
+	.userInp{
+		border-radius: 3px;
+		height: 1.8rem;
+		width: 100%;
+		border: none;
+	}
+
+	.game{
+		background-color: lightgray;
+		width: 20%;
+		padding:4% 5%;
+		margin: auto;
+		min-height: 23rem;
+	}
+
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td, th {
+		border: 1px solid black;
+		text-align: left;
+		padding: 0.5em 1em;
+	}
+
+	tr:nth-child(even) {
+		background-color: dimgray;
+	}
+</style>
+
+<script type="text/javascript">
+	var input;
+	var count = 1;
+	var table;
+	var td;
+	var tr;
+	var randomNum;
+	var text;
+	var min = 0;
+	var max = 100;
+
+	window.onload = (e) => {
+		randomNum = Math.floor((Math.random() * 100) + 1);
+		table = document.getElementById("table");
+	}
+
+	function run(){
+		input = parseInt(document.getElementById("input").value);
+		tr = document.createElement("tr");
+		td = document.createElement("td");
+		var midRange = parseInt((min + max) / 2 );
+
+		if(input != randomNum){
+		randomNum > midRange ? min = midRange : max = midRange;
+		td.appendChild(document.createTextNode(min +" ~ " + max ));
+		}else{
+		alert("You got it! 🎉");
+		}
+		tr.appendChild(td);
+		table.appendChild(tr);
+	}
+</script>
+<div class="game font_fam">
+		<h1 ><b><label>Guessing Game</label></b></h1>
+		<label>Your Guess (1~100) </label> <br> <br>
+		<input type="text" id="input"class="userInp" /> <br> <br>
+		<input class="b" type="button" id="play" value="play" onclick="run()"/> <br> <br>
+		<table id="table">
+		<tr><th>Result</th></tr>
+		</table>
+</div>
+</body>
+</html>

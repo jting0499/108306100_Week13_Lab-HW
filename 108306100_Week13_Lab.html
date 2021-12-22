@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title></title>
+	<style type="text/css">
+	.center{
+	text-align: center;
+	border-radius: 15px;
+	padding: 1%;
+	}
+
+	.back{
+	border-style: solid;
+	border-color: black;
+	display: inline-block;
+	background-color: lightgray;
+	}
+
+	.size{
+	width: 325pt;
+	height: 20pt;
+	}
+
+	.formatForbutton{
+		cursor: pointer;
+		background-color: lightsteelblue;
+	}
+
+	</style>
+	</head>
+
+	<body>
+	<form align = "center">
+	<div class="center back">
+	<label><b><h1>JS Calculator</h1></b></label>
+		<label><p>Number 1</p></label>
+	<input class="size" id="firstNum" type="text" size=55 style=" align: center">
+		<label><p>Number 2</p></label>
+	<input class="size" id="secondNum" type="text" size=55 style=" align: center">
+	<label><p>Operate Way?</p></label>
+
+	<select class="size" id="operator">
+		<option id="+">+</option>
+		<option id="-">-</option>
+		<option id="*">*</option>
+		<option id="/">/</option>
+	</select><p>
+
+	<input class="size formatForbutton" id="button" type="button" value="Run" style="color:black"><p>
+	<p id = "res">Result = <p>
+
+	</div>
+	</form>
+
+	<script type="text/javascript">
+	var num1;
+	var num2;
+	var result=0;
+
+	document.getElementById("button").addEventListener("click", function(){
+	if(document.getElementById("operator").value === '+'){
+	return add();
+	} else if(document.getElementById("operator").value === '-'){
+	return minus();
+	} else if(document.getElementById("operator").value === '*'){
+	return multiply();
+	} else{
+	return divide();
+	}
+	});
+
+	function add(){
+	num1 = parseFloat(document.getElementById("firstNum").value);
+	num2 = parseFloat(document.getElementById("secondNum").value);
+	var res_value = num1 + num2;
+	result = res_value;
+	document.getElementById("res").innerHTML = "Result = " + result;
+	}
+
+	function minus(){
+	num1 = parseFloat(document.getElementById("firstNum").value);
+	num2 = parseFloat(document.getElementById("secondNum").value);
+	var res_value = num1 - num2;
+	result = res_value;
+	document.getElementById("res").innerHTML = "Result = " + result;
+	}
+
+	function multiply(){
+	num1 = parseFloat(document.getElementById("firstNum").value);
+	num2 = parseFloat(document.getElementById("secondNum").value);
+	var res_value = num1 * num2;
+	result = res_value;
+	document.getElementById("res").innerHTML = "Result = " + result;
+	}
+
+	function divide(){
+	num1 = document.getElementById("firstNum");
+	num2 = document.getElementById("secondNum");
+	var res_value = parseFloat(num1.value) / parseFloat(num2.value);
+	result = res_value;
+	document.getElementById("res").innerHTML = "Result = " + result;
+	}
+
+	</script>
+
+</body>
+
+</html>
